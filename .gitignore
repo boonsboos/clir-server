@@ -1,0 +1,4 @@
+clir
+*.exe
+vls.log
+*.toml
