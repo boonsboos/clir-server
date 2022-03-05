@@ -46,22 +46,3 @@ pub fn (mut c Encoder) finish() []byte {
 	tmp << c.data
 	return tmp
 }
-
-pub fn encode_handshake(pack SHandshake) []byte {
-	mut e := Encoder{}
-	e.encode_byte(pack.id)
-	e.encode_u64(pack.ts)
-	return e.finish()
-}
-
-pub fn encode_invalid() []byte {
-	mut e := Encoder{}
-	e.encode_byte(3) // packet ID of invalid packet
-	return e.finish()
-}
-
-pub fn encode_clir_request() []byte {
-	mut e := Encoder{}
-	e.encode_byte(4)
-	return e.finish()
-}

@@ -116,26 +116,9 @@ pub fn (mut d Decoder) decode_clir() Clir {
 pub fn decode_packet(packet []byte) Packet {
 	
 	mut d := new_decoder(packet)
-
-	match d.decode_byte() {
-		1 {
-			return CHandshake { ts: d.decode_u64() }
-		}
-		2 {
-			return CAuthRequest{
-				key: d.decode_string()
-			}
-		}
-		5 {
-			return CClirSend{
-				key : d.decode_string()
-				clir: d.decode_clir()
-			}
-		}
-		else { 
-			return SInvalid{}
-			// terminate connection
-		}
+	return Packet {
+		d.decode_string(),
+		d.decode_clir()
 	}
 
 }
