@@ -1,7 +1,5 @@
 module server
-
-import time
-
+// OLD PROTOCOL STARTS HERE
 // C->S Handshake
 // S->C Handshake
 // C->S Authentication Request
@@ -10,8 +8,10 @@ import time
 	// S->C Invalid
 	// terminates the connection
 // S->C Clir Request
+// NEW PROTOCOL STARTS HERE
 // C->S Clir
 // S Processes
+// END PROTOCOL
 
 // If ANY packet fails, the connection is terminated
 

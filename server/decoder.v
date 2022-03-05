@@ -19,6 +19,8 @@ pub fn new_decoder(dat []byte) Decoder {
 
 pub fn (mut d Decoder) decode_string() string {
 	str_len := int(d.decode_u32())
+	println('strlen: $str_len')
+	println('idx: $d.idx')
 	if d.not_eof() && d.offset_eof(str_len) {
 		d.idx += str_len
 	} else {
@@ -69,12 +71,12 @@ pub fn (mut d Decoder) decode_bool() bool {
 
 [inline]
 pub fn (mut d Decoder) not_eof() bool {
-	return d.len >= d.idx-4
+	return d.len > d.idx-4
 }
 
 [inline]
 pub fn (mut d Decoder) offset_eof(offset int) bool {
-	return d.len >= d.idx-4 + offset
+	return d.len > d.idx-4 + offset
 }
 
 pub struct Clir {
